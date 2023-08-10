@@ -1,0 +1,35 @@
+const data = [
+  {
+    provincia: "Buenos Aires",
+    pais: "Argentina",
+  },
+  {
+    provincia: "La Rochelle",
+    pais: "Francia",
+  },
+  {
+    provincia: "Montevideo",
+    pais: "Uruguay",
+  },
+];
+
+const provinciasAgrupadas = {};
+
+data.forEach(obj => {
+  const pais = obj.pais;
+  const provincia = obj.provincia;
+
+  if (!provinciasAgrupadas[pais]) {
+    provinciasAgrupadas[pais] = {
+      pais: pais,
+      provincias: [],
+      cantidad: 0,
+    };
+  }
+
+  provinciasAgrupadas[pais].provincias.push(provincia);
+  provinciasAgrupadas[pais].cantidad++;
+});
+
+const resultado = Object.values(provinciasAgrupadas);
+console.log(resultado)
